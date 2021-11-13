@@ -30,9 +30,9 @@ const questions = [
     },
     {
         type: "input",
-        name: "licence",
-        message: "What is your licence?"
-        
+        message: "What is the licence of this project?",
+        choices: ["MIT", "Mozilla", "ISC", "Boost 1.0"],
+        name: "licence,"
     },
     {
         type: "input",
@@ -42,24 +42,25 @@ const questions = [
     {
         type: "input",
         name: "usage",
-        message: "What does the usage of this project?"
+        message: "Where does the usage of this project?"
     },
     {
         type: "input",
         name: "contributing",
-        message: "How the people can contribute to this project?"
+        message: "Who contributed to this project?"
     },
     {   type: "input",
         name: "test",
-        message: "How to test this project?"
+        message: "Is there any test command?"
     },
         
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) => {
-        if(err) console.log(err);
+    var readme = generateMarkdown(data);
+    fs.writeFile(fileName, readme, function(err) {
+        console.log(err);
         console.log("Success...");
     });
 };
@@ -69,7 +70,7 @@ function init() {
     inquirer.prompt (questions) 
         .then((inquirerAnswers) => {
         console.log("Creating...");
-        writeToFile("README.md", generateMarkdown(userInput));
+        writeToFile("README.md", inquirerAnswers);
     })
 }
 // Function call to initialize app
