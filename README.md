@@ -3,20 +3,19 @@
   ## License: [undefined] 
 
   ## Table of Contents
-
- --> [Description] (#description)
- --> [Installation] (#installation)
- --> [Usage] (#usage)
- --> [Info] (#information)
+ * [Description](#description)
+ * [Installation](#installation)
+ * [Usage](#usage)
+ * [Info](#information)
 
  ## Description
- createing a file
+ create a readme file
  
 ## Installation 
 npm i
 
 ## Usage
-    generate a file
+    generating a file
 
 ## Info
     Github: [usfethan](https://github.com/usfethan/)
