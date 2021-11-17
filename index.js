@@ -10,29 +10,13 @@ const Choices = require("inquirer/lib/objects/choices");
 const questions = [
     {
         type: "input",
-        name: "username",
-        message: "What is your Github username?"
-    },
-    {
-        type: "input",
-        name: "email",
-        message: "Please enter your email:"
-    },
-    {
-        type: "input",
         name: "title",
-        message: "What is the name of project?"
+        message: "What is title of the project?"
     },
     {
         type: "input",
         name: "description",
         message: "How can you describe your project?"
-    },
-    {
-        type: "input",
-        message: "What is the licence of this project?",
-        choices: ["MIT", "Mozilla", "ISC", "Boost 1.0"],
-        name: "licence,"
     },
     {
         type: "input",
@@ -42,26 +26,35 @@ const questions = [
     {
         type: "input",
         name: "usage",
-        message: "Where does the usage of this project?"
+        message: "How do you use this project?"
+    },
+    {
+        type: "checkbox",
+        name: "licence",
+        message: "What is the licence of this project?",
+        choices: ["MIT", "Mozilla", "ISC", "Boost 1.0"],
     },
     {
         type: "input",
-        name: "contributing",
-        message: "Who contributed to this project?"
+        name: "github",
+        message: "Please enter yout github username"
     },
     {   type: "input",
-        name: "test",
-        message: "Is there any test command?"
+        name: "email",
+        message: "Enter your email address for contact"
     },
         
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    var readme = generateMarkdown(data);
-    fs.writeFile(fileName, readme, function(err) {
-        console.log(err);
-        console.log("Success...");
+    
+    fs.writeFile(fileName, data, (err) => {
+        if (err)
+            throw err;
+        console.log('Success')
+        
+        
     });
 };
 
@@ -69,8 +62,8 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt (questions) 
         .then((inquirerAnswers) => {
-        console.log("Creating...");
-        writeToFile("README.md", inquirerAnswers);
+        console.log(inquirerAnswers);
+        writeToFile("README.md", generateMarkdown(inquirerAnswers));
     })
 }
 // Function call to initialize app

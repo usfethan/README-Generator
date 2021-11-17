@@ -1,105 +1,83 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// // TODO: Create a function that returns a license badge based on which license is passed in
+// // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  var yourLicense = ""
+  var badge;
   var licenseType;
   if(licenseType === "MIT") {
-    yourLicense = "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)"
+    badge = "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)"
   }else if (licenseType === "Mozilla MPL 2.0") {
-    yourLicense = "![License: Mzoilla MPL 2.0](https://img.shields.io/badge/License-Mozilla MPL 2.0-green.svg)"
+    badge = "![License: Mzoilla MPL 2.0](https://img.shields.io/badge/License-Mozilla MPL 2.0-green.svg)"
   } else if (licenseType === "ISC") {
-    yourLicense = "![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)"
+    badge = "![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)"
   } else if (licenseType === "Boost 1.0") {
-    yourLicense = "![License: Boost 1.0](https://img.shields.io/badge/License-Boost 1.0-lightblue.svg)"
+    badge = "![License: Boost 1.0](https://img.shields.io/badge/License-Boost 1.0-lightblue.svg)"
   } else {
-    yourLicense = "N/A"
+    badge = "N/A"
   }
-  return yourLicense;
-  // var badge;
-  // switch (license) {
-  //   case  "MIT" :
-  //     badge = {name: "MIT", color: "yellow"};
-  //     break;
-  //   case "Mozilla" :
-  //     badge = {name: "Mozilla MPL 2.0", color: "green"};
-  //     break;
-  //   case "ISC" :
-  //     badge = {name: "ISC Licence", color: "blue"};
-  //       break;
-  //   case "Boost 1.0" :
-  //     badge = {name: "Boost 1.0", color: "lightblue"};
-  //     break;
-  // }
-  // return "https://img.shields.io/static/v1?label=license&message=${badge.name}&color=${badge.color}" ;
+  return `https://img.shields.io/static/v1?label=license-&meassage=${badge}&color=${licenseType})`;
+ 
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {
-    var yourLicense;
-    var yourLicenseUrl;
-  if(yourLicense === "MIT") {
-      yourLicenseUrl = "https://choosealicense.com/licenses/${mit}/ "
-  } else if (yourLicense === "Mozilla") {
-    yourLicenseUrl = "https://choosealicense.com/licenses/${mozilla}/"
-  } else if (yourLicense === "ISC") {
-    yourLicenseUrl = "https://choosealicense.com/licenses/${isc}/"
-  } else if (yourLicense === "Boost 1.0") {
-    yourLicenseUrl = "https://choosealicense.com/licenses/${boost1.0}/"
+// // TODO: Create a function that returns the license link
+// // // If there is no license, return an empty string
+function renderLicenseLink(licenseBadge) {
+    var badge;
+    var licenseUrl;
+  if(badge === "MIT") {
+    licenseUrl = "mit"
+  } else if (badge === "Mozilla") {
+    licenseUrl = "mpl-2.0"
+  } else if (badge === "ISC") {
+    licenseUrl = "isc"
+  } else if (badge === "Boost 1.0") {
+    licenseUrl = "boost 1.0"
   }
-  return yourLicenseUrl;
+  return `https://choosealicense.com/licenses/${licenseUrl}/`;
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if (yourLicense !== "None") {
+  if (licenseUrl !== "None") {
     return (
      `## License
-       Copyright ${yourLicense}. All rights reserverd.`
+       Copyright ${data.licenseUrl}. All rights reserverd.`
     )
   }
   return;
 }
 
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  var yourLicense = renderLicenseBadge(data.yourLicense);
-  var licenseUrl = renderLicenseLink(data.license);
-  return `# ${data.title}
- ${renderBadge(data.license)}
+// TODO: Create a function to generate markdown for README ${renderBadge(data.license)}
 
- ## Github URL
-    [${data.github}](https://github.com/${data.github}/)
+function generateMarkdown(data) {
+  var licenseBadge = renderLicenseBadge(data.license);
+  // var yourLicenseUrl = renderLicenseLink(data.license);
+  
+  return `## ${data.title}
+
+  ## License: [${data.licenseBadge}] 
+
+  ## Table of Contents
+
+ --> [Description] (#description)
+ --> [Installation] (#installation)
+ --> [Usage] (#usage)
+ --> [Info] (#information)
 
  ## Description
-    ${data.description}
-
- ## Table of Contents
-
- *[License] (#License)
- *[Installation] (#Installation)
- *[Usage] (#Usage)
- *[Contributors] (#Contributors)
- *[Test] (#Test)
-
+ ${data.description}
  
-## License
-    ${data.license} ${licenseUrl}
-
 ## Installation 
-    ${data.installation}
+${data.installation}
 
 ## Usage
     ${data.usage}
 
-## Contributors
-    ${data.contributors}
-
-## Test
-    ${data.test}
-
+## Info
+    Github: [${data.github}](https://github.com/${data.github}/)
+    Email: ${data.email}
 `;
+
 }
 
 module.exports = generateMarkdown;
