@@ -2,12 +2,14 @@
 
 const inquirer = require ("inquirer");
 const fs = require("fs");
-const path = require("path");
+
 const generateMarkdown = require("./generateMarkdown.js");
-const Choices = require("inquirer/lib/objects/choices");
+
 
 // TODO: Create an array of questions for user input
-const questions = [
+const questions = () =>{
+    return inquirer.prompt(
+ [
     {
         type: "input",
         name: "title",
@@ -29,22 +31,38 @@ const questions = [
         message: "How do you use this project?"
     },
     {
-        type: "checkbox",
+        type: "list",
         name: "licence",
         message: "What is the licence of this project?",
-        choices: ["MIT", "Mozilla", "ISC", "Boost 1.0"],
+        choices: ["MIT", "GNU"],
+        default: ["MIT"]
+    },
+    {
+        type: "input",
+        name: "test",
+        message: "What command should be run to run test?",
+        default: "npm test"
     },
     {
         type: "input",
         name: "github",
-        message: "Please enter yout github username"
+        message: "Please enter yout github username!"
     },
     {   type: "input",
         name: "email",
-        message: "Enter your email address for contact"
+        message: "Enter your email address for contact",
+        validate: nameInput => {
+                if(nameInput) {
+                    return true;
+                } else {
+                    console.log("Please enter correct email address!");
+                    return false;
+                }
+            }
     },
         
-];
+]);
+};
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
