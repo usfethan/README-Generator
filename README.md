@@ -1,22 +1,26 @@
-## readme
+README
+Github licence
 
-  ## License: [undefined] 
+Description
+Creating readme file
 
-  ## Table of Contents
- * [Description](#description)
- * [Installation](#installation)
- * [Usage](#usage)
- * [Info](#information)
+Table of Contents
+Installation
+Usage
+License
+Test
+Info
+Installation
+User should clone from github
 
- ## Description
- create a readme file
- 
-## Installation 
-npm i
+Usage
+use inquirer from your command line to anwser all questions
 
-## Usage
-    generating a file
+License
+This project is license under undefined]
 
-## Info
-    Github: [usfethan](https://github.com/usfethan/)
-    Email: usfethan@gmail.com
+Test
+npm test
+
+Info
+Github: usfethan Email: usfethan@gmail.com
