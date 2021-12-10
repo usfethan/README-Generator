@@ -4,28 +4,28 @@ https://watch.screencastify.com/v/6eTBc7ci4b4YAokO1j1F
 README
 Github licence
 
-Description
+## Description
 Creating readme file
 
-Table of Contents
-Installation
-Usage
-License
-Test
-Info
+## Table of Contents
+* Installation
+* Usage
+* License
+* Test
+* Info
 
-Installation
+## Installation
 User should clone from github
 
 
-Usage
+## Usage
 use inquirer from your command line to anwser all questions
 
-License
+## License
 This project is license under undefined]
 
-Test
+## Test
 npm test
 
-Info
+## Info
 Github: usfethan Email: usfethan@gmail.com
